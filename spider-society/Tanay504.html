@@ -42,6 +42,11 @@
       position: relative;
       display: flex;
       flex-direction: column;
+      /* border glow — two tones off the same suit/gamma pair used everywhere else */
+      box-shadow:
+        0 0 0 1px rgba(230, 36, 41, 0.22),
+        0 0 22px -3px rgba(61, 220, 116, 0.30),
+        0 0 46px -12px rgba(230, 36, 41, 0.35);
     }
 
     /* Comic halftone burst, anchored behind the hero name — subject-appropriate,
@@ -82,6 +87,24 @@
       flex-direction: column;
       height: 100%;
       padding-left: 8px;
+    }
+
+    /* ── Corner badge — tiny rank marker, top-right ──────────── */
+    .corner-badge {
+      position: absolute;
+      top: 16px;
+      right: 4px;
+      z-index: 2;
+      font-family: ui-monospace, "SF Mono", Menlo, monospace;
+      font-size: 8.5px;
+      font-weight: 700;
+      letter-spacing: 1.3px;
+      color: var(--gamma);
+      padding: 3px 7px;
+      border: 1px solid rgba(61, 220, 116, 0.45);
+      border-radius: 3px;
+      background: rgba(61, 220, 116, 0.08);
+      white-space: nowrap;
     }
 
     /* ── Header: hex-clipped avatar + identity ───────────────── */
@@ -162,7 +185,7 @@
       color: var(--muted);
     }
 
-    /* ── Flavor line, comic-caption style ────────────────────── */
+    /* ── Flavor line, comic-caption style — held to one line ─── */
     .caption {
       margin: 14px 0 0;
       font-size: 12.5px;
@@ -171,6 +194,9 @@
       border-left: 2px solid var(--line);
       padding-left: 10px;
       line-height: 1.4;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     /* ── Skills as hex tiles, not generic pills ──────────────── */
@@ -266,6 +292,8 @@
     }
   </style>
 
+  <div class="corner-badge">S-CLASS</div>
+
   <div class="card-body">
     <div class="id-row">
       <div class="avatar-frame">
@@ -280,7 +308,7 @@
     <h1 class="alias">Dr Banner</h1>
     <p class="field-tag">FIELD DESIGNATION · GAMMA-CLASS</p>
 
-    <p class="caption">"Smart, calm, and dangerous only when the math demands it."</p>
+    <p class="caption">Calm until the math says otherwise.</p>
 
     <ul class="skills">
       <li>Knowledge</li>
